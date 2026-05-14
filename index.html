@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comrade Classen</title>
+  <meta name="description" content="Writing, plays, music, games. Forever Onwards. — Comrade Classen">
+  <meta name="author" content="Joseph 'Comrade' Classen">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Comrade Classen">
+  <meta property="og:description" content="Writing, plays, music, and games — for those still becoming.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://comradeclassen.com">
+
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Comrade Classen">
+  <meta name="twitter:description" content="Writing, plays, music, and games — for those still becoming.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500&display=swap">
+
+  <style>
+    :root {
+      --bg: #F8F4EE;
+      --text: #1F1B16;
+      --muted: #5F5851;
+      --rule: #E4DCCF;
+      --accent: #9C2B2B;
+
+      --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding: 0 24px;
+    }
+
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 96px 0 64px;
+    }
+
+    section { margin-bottom: 72px; }
+
+    /* Hero */
+    .hero { margin-bottom: 120px; }
+
+    .haiku {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(24px, 4.8vw, 38px);
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      margin-bottom: 18px;
+      font-variation-settings: "opsz" 96;
+    }
+
+    .haiku .line {
+      display: block;
+    }
+
+    .byline {
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* About */
+    .about .statement {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(19px, 2.4vw, 22px);
+      line-height: 1.5;
+      margin-bottom: 22px;
+    }
+
+    .about .bio {
+      font-size: 17px;
+      color: var(--text);
+    }
+
+    /* Work */
+    .work article {
+      margin-bottom: 56px;
+    }
+    .work article:last-child { margin-bottom: 0; }
+
+    h2 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 22px;
+      margin-bottom: 14px;
+      letter-spacing: -0.005em;
+    }
+
+    .work p { margin-bottom: 12px; }
+    .work p:last-child { margin-bottom: 0; }
+
+    .links {
+      font-size: 15px;
+      color: var(--muted);
+    }
+    .links .sep {
+      color: var(--rule);
+      margin: 0 8px;
+    }
+
+    /* Elsewhere */
+    .elsewhere ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 28px;
+      font-size: 16px;
+    }
+
+    /* Links */
+    a {
+      color: var(--text);
+      text-decoration: underline;
+      text-decoration-color: var(--rule);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      transition: color 0.15s ease, text-decoration-color 0.15s ease;
+    }
+
+    a:hover {
+      color: var(--accent);
+      text-decoration-color: var(--accent);
+    }
+
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    em, i { font-style: italic; }
+
+    /* Footer */
+    footer {
+      margin-top: 96px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      body { padding: 0 22px; }
+      main { padding: 64px 0 48px; }
+      .hero { margin-bottom: 80px; }
+      section { margin-bottom: 56px; }
+      .work article { margin-bottom: 48px; }
+      .elsewhere ul { gap: 6px 22px; }
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      a { transition: none; }
+    }
+  </style>
+
+  <!--
+    Google Analytics (GA4) — drop your Measurement ID in and uncomment.
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+  -->
+</head>
+<body>
+  <main>
+
+    <!-- Hero -->
+    <section class="hero" aria-label="Introduction">
+      <p class="haiku">
+        <span class="line">Forever Onwards.</span>
+        <span class="line">Writing, plays, music, and games</span>
+        <span class="line">— for those still becoming.</span>
+      </p>
+      <p class="byline">Comrade Classen</p>
+    </section>
+
+    <!-- About -->
+    <section class="about" aria-label="About">
+      <p class="statement">
+        Comrade Classen builds things that synthesize inner life — across writing, plays, music, and games.
+      </p>
+      <p class="bio">
+        Joseph &ldquo;Comrade&rdquo; Classen is a playwright, musician, writer, and game director based in Elizabeth, NJ, working under Classen LLC. Puerto Rican and Colombian. His plays premiere in northern New Jersey. His writing lives at <a href="https://comradeclassen.substack.com">Forever Onwards</a>. His current project is <em>HAJIME</em>, a judo dojo simulator set in a fully simulated New Jersey, in long-form development.
+      </p>
+    </section>
+
+    <!-- Work -->
+    <section class="work" aria-label="Work">
+
+      <article>
+        <h2>Plays</h2>
+        <p>
+          <em>3000 Days of Abandonment</em> premiered at the Hamilton Arts Festival in August 2025. Sold out both performances. Won 1st Place in the HAF Playwriting Competition. A monologue from the play is published in <em>The Best Women&rsquo;s Stage Monologues 2026</em> (Smith &amp; Kraus). HAF Playwright-in-Residence, March&ndash;August 2025.
+        </p>
+        <p class="links">
+          Press:
+          <a href="https://www.newjerseystage.com/articles2/2025/08/02/2025-annual-hamilton-arts-festival-to-take-place-august-7-23-in-paterson/">NJ Stage</a>
+          <span class="sep">·</span>
+          <a href="https://www.tapinto.net/towns/paterson/sections/arts-and-entertainment/articles/dramatic-play-3000-days-of-abandonment-rounds-out-paterson-s-fifth-annual-hamilton-arts-festival">TAPinto Paterson</a>
+          <span class="sep">·</span>
+          <a href="https://njartsmaven.substack.com/p/patersons-5th-annual-hamilton-arts">NJ Arts Maven</a>
+        </p>
+      </article>
+
+      <article>
+        <h2>Games</h2>
+        <p>
+          <em>HAJIME</em> is a judo dojo simulator set in a fully simulated New Jersey. You run a school. White belts walk through the door, and over years you decide what the place becomes &mdash; a competition factory, a traditional Kodokan club, a federation player, a family lineage. The dojo persists when your character doesn&rsquo;t. Matches simulate at the grip; throws emerge from kuzushi, and a prose layer narrates what the engine did. <em>Hajime</em> is what the referee calls to begin a match. In long-form development.
+        </p>
+        <p class="links">
+          <a href="https://github.com/ComradeClassen/hajime">Repo on GitHub</a>
+          <span class="sep">·</span>
+          Devlog (coming soon)
+        </p>
+      </article>
+
+      <article>
+        <h2>Writing</h2>
+        <p>
+          <em>Forever Onwards: Letters from a Comrade</em>. Essays for those still searching &mdash; for meaning, for strength, for self. On Substack since 2024.
+        </p>
+        <p class="links">
+          <a href="https://comradeclassen.substack.com">Read on Substack</a>
+        </p>
+      </article>
+
+      <article>
+        <h2>Music</h2>
+        <p>
+          Covers, instrumentals, and experimental jams on 12-string guitar, banjo, harmonica, accordion, Moog synthesizers, SP-404 MKII, and Maschine MK3. Bomba percussion, trained with Segunda Quimbamba.
+        </p>
+        <p class="links">
+          <a href="https://soundcloud.com/comrade-classen">Listen on SoundCloud</a>
+        </p>
+      </article>
+
+    </section>
+
+    <!-- Elsewhere -->
+    <section class="elsewhere" aria-label="Elsewhere on the internet">
+      <h2>Elsewhere</h2>
+      <ul>
+        <li><a href="https://instagram.com/comradeclassen">Instagram</a></li>
+        <li><a href="https://youtube.com/@comradeclassen">YouTube</a></li>
+        <li><a href="https://tiktok.com/@comradeclassen">TikTok</a></li>
+        <li><a href="https://linkedin.com/in/comradeclassen">LinkedIn</a></li>
+        <li><a href="https://threads.net/@comradeclassen">Threads</a></li>
+        <li><a href="https://x.com/comradeclassen">X</a></li>
+        <li><a href="https://github.com/ComradeClassen">GitHub</a></li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 Classen LLC &middot; Elizabeth, NJ</p>
+    </footer>
+
+  </main>
+</body>
+</html>
