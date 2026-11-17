@@ -3,290 +3,512 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Comrade Classen</title>
-  <meta name="description" content="Writing, plays, music, games. Forever Onwards. — Comrade Classen">
+  <title>Comrade Classen — Playwright, Writer, Musician</title>
+  <meta name="description" content="Joseph “Comrade” Classen — plays, essays, music, and games about what we carry and what we pass down.">
   <meta name="author" content="Joseph 'Comrade' Classen">
 
-  <!-- Open Graph -->
   <meta property="og:title" content="Comrade Classen">
-  <meta property="og:description" content="Writing, plays, music, and games — for those still becoming.">
+  <meta property="og:description" content="Plays, essays, music, and games about what we carry and what we pass down.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://comradeclassen.com">
-
-  <!-- Twitter card -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Comrade Classen">
-  <meta name="twitter:description" content="Writing, plays, music, and games — for those still becoming.">
+  <meta name="twitter:description" content="Plays, essays, music, and games about what we carry and what we pass down.">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500&display=swap">
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,700,400i&f[]=general-sans@400,500,600&display=swap">
 
   <style>
     :root {
-      --bg: #F8F4EE;
-      --text: #1F1B16;
-      --muted: #5F5851;
-      --rule: #E4DCCF;
-      --accent: #9C2B2B;
+      --ink: #0F0D0C;
+      --ink-2: #181513;
+      --ink-3: #231F1C;
+      --bone: #F1EBE1;
+      --bone-muted: #B4AB9F;
+      --rule: #34302C;
+      --red: #C8322A;
+      --red-deep: #8E1F1A;
+      --yellow: #E9B730;
 
-      --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
-      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --serif: 'Zodiak', Georgia, 'Times New Roman', serif;
+      --sans: 'General Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+      --wrap: 1180px;
+      --gutter: clamp(20px, 5vw, 56px);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: var(--sans);
       font-size: 17px;
       line-height: 1.65;
-      color: var(--text);
-      background: var(--bg);
+      color: var(--bone);
+      background: var(--ink);
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      padding: 0 24px;
     }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    :focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; border-radius: 2px; }
 
-    main {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 96px 0 64px;
-    }
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
 
-    section { margin-bottom: 72px; }
-
-    /* Hero */
-    .hero { margin-bottom: 120px; }
-
-    .haiku {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(24px, 4.8vw, 38px);
-      line-height: 1.35;
-      letter-spacing: -0.01em;
-      margin-bottom: 18px;
-      font-variation-settings: "opsz" 96;
-    }
-
-    .haiku .line {
-      display: block;
-    }
-
-    .byline {
+    .eyebrow {
       font-family: var(--sans);
-      font-size: 14px;
-      color: var(--muted);
-      letter-spacing: 0.04em;
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
+      color: var(--yellow);
     }
+
+    /* ---------- Header ---------- */
+    .site-header {
+      position: fixed; inset: 0 0 auto 0; z-index: 20;
+      transition: background .25s ease, border-color .25s ease;
+      border-bottom: 1px solid transparent;
+    }
+    .site-header.scrolled { background: rgba(15,13,12,.92); backdrop-filter: blur(8px); border-color: var(--rule); }
+    .site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .wordmark {
+      font-family: var(--serif); font-weight: 700; font-size: 19px;
+      letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+    }
+    .wordmark span { color: var(--red); }
+    .nav { display: flex; align-items: center; gap: 30px; list-style: none; }
+    .nav a {
+      font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; color: var(--bone-muted); transition: color .15s;
+    }
+    .nav a:hover { color: var(--bone); }
+    .nav .cta {
+      color: var(--ink); background: var(--yellow); padding: 9px 16px; border-radius: 2px;
+    }
+    .nav .cta:hover { color: var(--ink); background: #F3C951; }
+    .menu-btn {
+      display: none; background: none; border: 1px solid var(--rule); color: var(--bone);
+      width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 18px;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative; min-height: 100vh; min-height: 100svh;
+      display: flex; align-items: flex-end;
+      padding: 140px 0 clamp(56px, 9vh, 96px);
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 70% 60% at 78% 30%, rgba(200,50,42,.30), transparent 70%),
+        radial-gradient(ellipse 50% 40% at 10% 90%, rgba(233,183,48,.08), transparent 70%),
+        var(--ink);
+    }
+    /* Drop a photo in by adding class="hero has-photo" and setting --hero-img */
+    .hero.has-photo {
+      background:
+        linear-gradient(to top, rgba(15,13,12,.96) 0%, rgba(15,13,12,.55) 45%, rgba(15,13,12,.25) 100%),
+        var(--hero-img) center 30% / cover no-repeat, var(--ink);
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .07;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .hero .wrap { position: relative; z-index: 1; width: 100%; }
+    .hero h1 {
+      font-family: var(--serif); font-weight: 400;
+      font-size: clamp(44px, 8.4vw, 118px);
+      line-height: .98; letter-spacing: -0.025em;
+      max-width: 13ch; margin: 22px 0 34px;
+    }
+    .hero h1 em { font-style: italic; color: var(--red); }
+    .hero-foot {
+      display: flex; flex-wrap: wrap; gap: 18px 48px; align-items: baseline;
+      border-top: 1px solid var(--rule); padding-top: 22px;
+    }
+    .hero-foot .name { font-family: var(--serif); font-size: 21px; }
+    .hero-foot .roles { color: var(--bone-muted); font-size: 15px; }
+    .scroll-cue {
+      margin-left: auto; font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--bone-muted); text-decoration: none;
+    }
+    .scroll-cue:hover { color: var(--yellow); }
+
+    /* ---------- Now playing strip ---------- */
+    .now {
+      background: var(--yellow); color: var(--ink);
+    }
+    .now a {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 10px 28px;
+      padding: 20px 0; text-decoration: none;
+    }
+    .now .tag {
+      font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+      background: var(--ink); color: var(--yellow); padding: 5px 10px; border-radius: 2px;
+    }
+    .now .what { font-family: var(--serif); font-size: clamp(18px, 2.2vw, 23px); }
+    .now .what em { font-style: italic; }
+    .now .arrow { margin-left: auto; font-weight: 600; font-size: 14px; letter-spacing: .06em; }
+    .now a:hover .arrow { text-decoration: underline; text-underline-offset: 4px; }
+
+    /* ---------- Sections ---------- */
+    section.block { padding: clamp(80px, 12vw, 150px) 0; border-bottom: 1px solid var(--rule); }
+    .section-head { display: grid; grid-template-columns: 220px 1fr; gap: 32px; margin-bottom: 56px; }
+    .section-head h2 {
+      font-family: var(--serif); font-weight: 400;
+      font-size: clamp(34px, 4.6vw, 60px); line-height: 1.04; letter-spacing: -0.02em;
+    }
+    .section-head h2 em { font-style: italic; color: var(--red); }
 
     /* About */
+    .about-grid { display: grid; grid-template-columns: 220px 1fr; gap: 32px; }
     .about .statement {
-      font-family: var(--serif);
-      font-style: italic;
-      font-weight: 400;
-      font-size: clamp(19px, 2.4vw, 22px);
-      line-height: 1.5;
-      margin-bottom: 22px;
+      font-family: var(--serif); font-size: clamp(26px, 3.4vw, 42px); line-height: 1.22;
+      letter-spacing: -0.01em; max-width: 24ch; margin-bottom: 36px;
     }
+    .about .statement em { color: var(--yellow); font-style: italic; }
+    .about .bio { color: var(--bone-muted); max-width: 62ch; font-size: 18px; }
+    .about .bio a { color: var(--bone); text-decoration-color: var(--red); text-underline-offset: 4px; }
 
-    .about .bio {
-      font-size: 17px;
-      color: var(--text);
+    /* Theater */
+    .play {
+      display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(28px, 5vw, 72px);
+      align-items: stretch; margin-bottom: 72px;
     }
+    .play-visual {
+      position: relative; min-height: 420px; border-radius: 2px; overflow: hidden;
+      background:
+        linear-gradient(160deg, var(--red-deep) 0%, var(--ink-3) 55%, var(--ink-2) 100%);
+      display: flex; align-items: flex-end; padding: 32px;
+    }
+    .play-visual .big {
+      font-family: var(--serif); font-size: clamp(60px, 9vw, 128px); line-height: .9;
+      letter-spacing: -0.04em; color: var(--bone);
+    }
+    .play-visual .big small {
+      display: block; font-size: .28em; letter-spacing: 0; font-style: italic; color: var(--yellow); margin-top: 10px;
+    }
+    .play-visual .photo-note {
+      position: absolute; top: 18px; right: 18px; font-size: 11px; letter-spacing: .14em;
+      text-transform: uppercase; color: rgba(241,235,225,.45);
+    }
+    .play-body h3 { font-family: var(--serif); font-weight: 500; font-size: 32px; line-height: 1.1; margin: 14px 0 18px; }
+    .play-body h3 em { font-style: italic; }
+    .play-body p { color: var(--bone-muted); margin-bottom: 16px; }
+    .facts { list-style: none; border-top: 1px solid var(--rule); margin: 26px 0; }
+    .facts li {
+      display: flex; gap: 18px; padding: 13px 0; border-bottom: 1px solid var(--rule); font-size: 15.5px;
+    }
+    .facts .k { color: var(--yellow); min-width: 92px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; padding-top: 3px; }
+    .press { font-size: 14.5px; color: var(--bone-muted); }
+    .press a { color: var(--bone); text-underline-offset: 3px; text-decoration-color: var(--rule); }
+    .press a:hover { text-decoration-color: var(--red); }
 
-    /* Work */
-    .work article {
-      margin-bottom: 56px;
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 13.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+      text-decoration: none; padding: 14px 22px; border-radius: 2px;
+      border: 1px solid var(--bone); color: var(--bone); transition: all .15s;
     }
-    .work article:last-child { margin-bottom: 0; }
+    .btn:hover { background: var(--bone); color: var(--ink); }
+    .btn.red { background: var(--red); border-color: var(--red); color: var(--bone); }
+    .btn.red:hover { background: #DA3E35; border-color: #DA3E35; }
 
-    h2 {
-      font-family: var(--serif);
-      font-weight: 500;
-      font-size: 22px;
-      margin-bottom: 14px;
-      letter-spacing: -0.005em;
+    .second-play {
+      display: grid; grid-template-columns: 220px 1fr; gap: 32px;
+      padding-top: 48px; border-top: 1px solid var(--rule);
     }
+    .second-play h3 { font-family: var(--serif); font-weight: 500; font-size: 26px; margin-bottom: 10px; }
+    .second-play h3 em { font-style: italic; }
+    .second-play p { color: var(--bone-muted); max-width: 62ch; }
 
-    .work p { margin-bottom: 12px; }
-    .work p:last-child { margin-bottom: 0; }
+    /* Notebook */
+    .notebook { background: var(--ink-2); }
+    .posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--rule); border: 1px solid var(--rule); }
+    .post {
+      background: var(--ink-2); padding: 34px 30px 30px; text-decoration: none;
+      display: flex; flex-direction: column; min-height: 300px; transition: background .2s;
+    }
+    .post:hover { background: var(--ink-3); }
+    .post .date { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--bone-muted); }
+    .post h3 { font-family: var(--serif); font-weight: 500; font-size: 26px; line-height: 1.15; margin: 18px 0 12px; }
+    .post p { color: var(--bone-muted); font-size: 15.5px; }
+    .post .read { margin-top: auto; padding-top: 24px; font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--red); }
+    .post:hover .read { color: var(--yellow); }
+    .notebook-foot {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px;
+      margin-top: 48px;
+    }
+    .notebook-foot p { font-family: var(--serif); font-size: 22px; font-style: italic; max-width: 34ch; }
 
-    .links {
-      font-size: 15px;
-      color: var(--muted);
+    /* Disciplines */
+    .crafts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: var(--rule); border: 1px solid var(--rule); }
+    .craft { background: var(--ink); padding: clamp(32px, 4vw, 52px); }
+    .craft h3 { font-family: var(--serif); font-weight: 500; font-size: 34px; margin: 14px 0 16px; }
+    .craft h3 em { font-style: italic; }
+    .craft p { color: var(--bone-muted); margin-bottom: 24px; max-width: 52ch; }
+    .craft .link {
+      font-size: 13.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+      text-decoration: none; color: var(--bone); border-bottom: 1px solid var(--red); padding-bottom: 3px;
     }
-    .links .sep {
-      color: var(--rule);
-      margin: 0 8px;
-    }
+    .craft .link:hover { color: var(--yellow); border-color: var(--yellow); }
 
     /* Elsewhere */
-    .elsewhere ul {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px 28px;
-      font-size: 16px;
+    .elsewhere-list { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--rule); }
+    .elsewhere-list a {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 4px; border-bottom: 1px solid var(--rule); text-decoration: none;
+      font-family: var(--serif); font-size: 22px; transition: color .15s, padding .2s;
     }
+    .elsewhere-list li:not(:nth-child(4n)) a { margin-right: 28px; }
+    .elsewhere-list a::after { content: "↗"; font-family: var(--sans); font-size: 15px; color: var(--bone-muted); }
+    .elsewhere-list a:hover { color: var(--red); padding-left: 10px; }
 
-    /* Links */
-    a {
-      color: var(--text);
-      text-decoration: underline;
-      text-decoration-color: var(--rule);
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-      transition: color 0.15s ease, text-decoration-color 0.15s ease;
+    footer { padding: 40px 0 56px; color: var(--bone-muted); font-size: 13.5px; }
+    footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+    /* ---------- Reveal ---------- */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px) {
+      .section-head, .about-grid, .second-play { grid-template-columns: 1fr; gap: 14px; }
+      .play { grid-template-columns: 1fr; }
+      .play-visual { min-height: 300px; }
+      .posts { grid-template-columns: 1fr; }
+      .post { min-height: 0; }
+      .crafts { grid-template-columns: 1fr; }
+      .elsewhere-list { grid-template-columns: repeat(2, 1fr); }
+      .elsewhere-list li a { margin-right: 0 !important; }
+      .elsewhere-list li:nth-child(odd) a { margin-right: 22px !important; }
     }
-
-    a:hover {
-      color: var(--accent);
-      text-decoration-color: var(--accent);
+    @media (max-width: 760px) {
+      .menu-btn { display: inline-flex; align-items: center; justify-content: center; }
+      .nav {
+        position: fixed; inset: 72px 0 auto 0; flex-direction: column; align-items: flex-start; gap: 0;
+        background: var(--ink); border-bottom: 1px solid var(--rule); padding: 8px var(--gutter) 24px;
+        display: none;
+      }
+      .nav.open { display: flex; }
+      .nav li { width: 100%; }
+      .nav a { display: block; padding: 14px 0; font-size: 14px; border-bottom: 1px solid var(--rule); }
+      .nav .cta { display: inline-block; margin-top: 18px; border: 0; }
+      .scroll-cue { display: none; }
+      .now .arrow { margin-left: 0; }
     }
-
-    a:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-      border-radius: 2px;
+    @media (max-width: 480px) {
+      .elsewhere-list { grid-template-columns: 1fr; }
+      .elsewhere-list li a { margin-right: 0 !important; }
     }
-
-    em, i { font-style: italic; }
-
-    /* Footer */
-    footer {
-      margin-top: 96px;
-      padding-top: 24px;
-      border-top: 1px solid var(--rule);
-      font-size: 13px;
-      color: var(--muted);
-      letter-spacing: 0.02em;
-    }
-
-    /* Mobile */
-    @media (max-width: 600px) {
-      body { padding: 0 22px; }
-      main { padding: 64px 0 48px; }
-      .hero { margin-bottom: 80px; }
-      section { margin-bottom: 56px; }
-      .work article { margin-bottom: 48px; }
-      .elsewhere ul { gap: 6px 22px; }
-    }
-
-    /* Respect reduced motion */
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      a { transition: none; }
+      .reveal { opacity: 1; transform: none; transition: none; }
     }
   </style>
-
-  <!--
-    Google Analytics (GA4) — drop your Measurement ID in and uncomment.
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
-    </script>
-  -->
 </head>
 <body>
+
+  <header class="site-header" id="top">
+    <div class="wrap">
+      <a class="wordmark" href="#top">Comrade<span>.</span>Classen</a>
+      <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav">☰</button>
+      <ul class="nav" id="nav">
+        <li><a href="#about">About</a></li>
+        <li><a href="#theater">Theater</a></li>
+        <li><a href="#notebook">Writing</a></li>
+        <li><a href="#crafts">Music &amp; Games</a></li>
+        <li><a href="#elsewhere">Elsewhere</a></li>
+        <li><a class="cta" href="https://comradeclassen.substack.com">Read the Letters</a></li>
+      </ul>
+    </div>
+  </header>
+
   <main>
 
-    <!-- Hero -->
+    <!-- HERO — to use a photo: add class "has-photo" and style="--hero-img:url('assets/cast-photo.jpg')" -->
     <section class="hero" aria-label="Introduction">
-      <p class="haiku">
-        <span class="line">Forever Onwards.</span>
-        <span class="line">Writing, plays, music, and games</span>
-        <span class="line">— for those still becoming.</span>
-      </p>
-      <p class="byline">Comrade Classen</p>
+      <div class="wrap">
+        <p class="eyebrow">Playwright · Writer · Musician — Elizabeth, NJ</p>
+        <h1>Stories about what we <em>carry</em> — and what we pass down.</h1>
+        <div class="hero-foot">
+          <span class="name">Joseph “Comrade” Classen</span>
+          <span class="roles">Plays, essays, music, and games. Forever Onwards.</span>
+          <a class="scroll-cue" href="#about">Come in ↓</a>
+        </div>
+      </div>
     </section>
 
-    <!-- About -->
-    <section class="about" aria-label="About">
-      <p class="statement">
-        Comrade Classen builds things that synthesize inner life — across writing, plays, music, and games.
-      </p>
-      <p class="bio">
-        Joseph &ldquo;Comrade&rdquo; Classen is a playwright, musician, writer, and game director based in Elizabeth, NJ, working under Classen LLC. Puerto Rican and Colombian. His plays premiere in northern New Jersey. His writing lives at <a href="https://comradeclassen.substack.com">Forever Onwards</a>. His current project is <em>HAJIME</em>, a judo dojo simulator set in a fully simulated New Jersey, in long-form development.
-      </p>
+    <!-- NOW -->
+    <div class="now">
+      <div class="wrap">
+        <a href="https://comradeclassen.substack.com/p/3000-days-of-abandonment-returns">
+          <span class="tag">April 2027</span>
+          <span class="what"><em>3000 Days of Abandonment</em> returns — full mainstage production at Playhouse 22</span>
+          <span class="arrow">Read the announcement →</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="block about" id="about">
+      <div class="wrap about-grid">
+        <p class="eyebrow reveal">About</p>
+        <div>
+          <p class="statement reveal">I write about family, inheritance, and the things we <em>don’t say outside the house.</em></p>
+          <p class="bio reveal">
+            Joseph “Comrade” Classen is a playwright, musician, writer, and game director based in Elizabeth, NJ, working under Classen LLC. Puerto Rican and Colombian. His plays premiere in northern New Jersey. His writing lives at <a href="https://comradeclassen.substack.com">Forever Onwards</a>, and his current long-form project is <em>HAJIME</em>, a judo dojo simulator set in a fully simulated New Jersey.
+          </p>
+        </div>
+      </div>
     </section>
 
-    <!-- Work -->
-    <section class="work" aria-label="Work">
+    <!-- THEATER -->
+    <section class="block" id="theater">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow reveal">Theater</p>
+          <h2 class="reveal">Plays for the <em>stage.</em></h2>
+        </div>
 
-      <article>
-        <h2>Plays</h2>
-        <p>
-          <em>3000 Days of Abandonment</em> premiered at the Hamilton Arts Festival in August 2025. Sold out both performances. Won 1st Place in the HAF Playwriting Competition. A monologue from the play is published in <em>The Best Women&rsquo;s Stage Monologues 2026</em> (Smith &amp; Kraus). HAF Playwright-in-Residence, March&ndash;August 2025.
-        </p>
-        <p class="links">
-          Press:
-          <a href="https://www.newjerseystage.com/articles2/2025/08/02/2025-annual-hamilton-arts-festival-to-take-place-august-7-23-in-paterson/">NJ Stage</a>
-          <span class="sep">·</span>
-          <a href="https://www.tapinto.net/towns/paterson/sections/arts-and-entertainment/articles/dramatic-play-3000-days-of-abandonment-rounds-out-paterson-s-fifth-annual-hamilton-arts-festival">TAPinto Paterson</a>
-          <span class="sep">·</span>
-          <a href="https://njartsmaven.substack.com/p/patersons-5th-annual-hamilton-arts">NJ Arts Maven</a>
-        </p>
-      </article>
+        <article class="play">
+          <div class="play-visual reveal" aria-hidden="true">
+            <span class="photo-note">Cast photo goes here</span>
+            <p class="big">3000<small>Days of Abandonment</small></p>
+          </div>
+          <div class="play-body reveal">
+            <p class="eyebrow">Original play</p>
+            <h3><em>3000 Days of Abandonment</em></h3>
+            <p>Premiered at the Hamilton Arts Festival in Paterson in August 2025 and sold out both performances. Now returning as a full mainstage production.</p>
+            <ul class="facts">
+              <li><span class="k">Next</span><span>Playhouse 22 · April 2027</span></li>
+              <li><span class="k">Award</span><span>1st Place, HAF Playwriting Competition</span></li>
+              <li><span class="k">Published</span><span>Monologue in <em>The Best Women’s Stage Monologues 2026</em> (Smith &amp; Kraus)</span></li>
+              <li><span class="k">Residency</span><span>HAF Playwright-in-Residence, Mar–Aug 2025</span></li>
+            </ul>
+            <p class="press">
+              Press:
+              <a href="https://www.newjerseystage.com/articles2/2025/08/02/2025-annual-hamilton-arts-festival-to-take-place-august-7-23-in-paterson/">NJ Stage</a> ·
+              <a href="https://www.tapinto.net/towns/paterson/sections/arts-and-entertainment/articles/dramatic-play-3000-days-of-abandonment-rounds-out-paterson-s-fifth-annual-hamilton-arts-festival">TAPinto Paterson</a> ·
+              <a href="https://njartsmaven.substack.com/p/patersons-5th-annual-hamilton-arts">NJ Arts Maven</a>
+            </p>
+            <p style="margin-top:28px"><a class="btn red" href="https://comradeclassen.substack.com/p/3000-days-of-abandonment-returns">Follow the production →</a></p>
+          </div>
+        </article>
 
-      <article>
-        <h2>Games</h2>
-        <p>
-          <em>HAJIME</em> is a judo dojo simulator set in a fully simulated New Jersey. You run a school. White belts walk through the door, and over years you decide what the place becomes &mdash; a competition factory, a traditional Kodokan club, a federation player, a family lineage. The dojo persists when your character doesn&rsquo;t. Matches simulate at the grip; throws emerge from kuzushi, and a prose layer narrates what the engine did. <em>Hajime</em> is what the referee calls to begin a match. In long-form development.
-        </p>
-        <p class="links">
-          <a href="https://github.com/ComradeClassen/hajime">Repo on GitHub</a>
-          <span class="sep">·</span>
-          Devlog (coming soon)
-        </p>
-      </article>
-
-      <article>
-        <h2>Writing</h2>
-        <p>
-          <em>Forever Onwards: Letters from a Comrade</em>. Essays for those still searching &mdash; for meaning, for strength, for self. On Substack since 2024.
-        </p>
-        <p class="links">
-          <a href="https://comradeclassen.substack.com">Read on Substack</a>
-        </p>
-      </article>
-
-      <article>
-        <h2>Music</h2>
-        <p>
-          Covers, instrumentals, and experimental jams on 12-string guitar, banjo, harmonica, accordion, Moog synthesizers, SP-404 MKII, and Maschine MK3. Bomba percussion, trained with Segunda Quimbamba.
-        </p>
-        <p class="links">
-          <a href="https://soundcloud.com/comrade-classen">Listen on SoundCloud</a>
-        </p>
-      </article>
-
+        <article class="second-play reveal">
+          <p class="eyebrow">Co-written</p>
+          <div>
+            <h3><em>Agua Azul</em></h3>
+            <p>Co-written with Nanette. Staged reading, 2026. <a href="https://comradeclassen.substack.com/p/fear-is-a-portal" style="color:var(--bone);text-underline-offset:3px;text-decoration-color:var(--red)">On Agua Azul, emotional truth, and the act of surrender →</a></p>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <!-- Elsewhere -->
-    <section class="elsewhere" aria-label="Elsewhere on the internet">
-      <h2>Elsewhere</h2>
-      <ul>
-        <li><a href="https://instagram.com/comradeclassen">Instagram</a></li>
-        <li><a href="https://youtube.com/@comradeclassen">YouTube</a></li>
-        <li><a href="https://tiktok.com/@comradeclassen">TikTok</a></li>
-        <li><a href="https://linkedin.com/in/comradeclassen">LinkedIn</a></li>
-        <li><a href="https://threads.net/@comradeclassen">Threads</a></li>
-        <li><a href="https://x.com/comradeclassen">X</a></li>
-        <li><a href="https://github.com/ComradeClassen">GitHub</a></li>
-      </ul>
+    <!-- NOTEBOOK -->
+    <section class="block notebook" id="notebook">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow reveal">From the notebook</p>
+          <h2 class="reveal">Letters from a <em>Comrade.</em></h2>
+        </div>
+
+        <div class="posts reveal">
+          <a class="post" href="https://comradeclassen.substack.com/p/dispatch-from-the-route-1">
+            <span class="date">Nov 17, 2026 · Dispatch</span>
+            <h3>Dispatch from the Route — #1</h3>
+            <p>Sunlight, roadside garbage, and the role of chance in life.</p>
+            <span class="read">Read on Substack →</span>
+          </a>
+          <a class="post" href="https://comradeclassen.substack.com/p/fear-is-a-portal">
+            <span class="date">Nov 13, 2026 · Essay</span>
+            <h3>Fear is a Portal</h3>
+            <p>On Agua Azul, emotional truth, and the act of surrender.</p>
+            <span class="read">Read on Substack →</span>
+          </a>
+          <a class="post" href="https://comradeclassen.substack.com/p/you-dont-tell-family-stories-outside">
+            <span class="date">Oct 27, 2026 · Essay</span>
+            <h3>You don’t tell family stories outside the house.</h3>
+            <p>4th grade assignment. Drunken Uncle Jimmy. A 25-year rule.</p>
+            <span class="read">Read on Substack →</span>
+          </a>
+        </div>
+
+        <div class="notebook-foot reveal">
+          <p>Forever Onwards — essays and dispatches, written as they happen.</p>
+          <a class="btn" href="https://comradeclassen.substack.com">Follow on Substack →</a>
+        </div>
+      </div>
     </section>
 
-    <footer>
-      <p>&copy; 2026 Classen LLC &middot; Elizabeth, NJ</p>
-    </footer>
+    <!-- CRAFTS -->
+    <section class="block" id="crafts">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow reveal">Also making</p>
+          <h2 class="reveal">Music &amp; <em>games.</em></h2>
+        </div>
+        <div class="crafts reveal">
+          <article class="craft">
+            <p class="eyebrow">Music</p>
+            <h3>Twelve strings &amp; a <em>bomba</em> drum</h3>
+            <p>Covers, instrumentals, and experimental jams on 12-string guitar, banjo, harmonica, accordion, Moog synthesizers, SP-404 MKII, and Maschine MK3. Bomba percussion, trained with Segunda Quimbamba.</p>
+            <a class="link" href="https://soundcloud.com/comrade-classen">Listen on SoundCloud ↗</a>
+          </article>
+          <article class="craft">
+            <p class="eyebrow">Games</p>
+            <h3><em>HAJIME</em></h3>
+            <p>A judo dojo simulator set in a fully simulated New Jersey. You run a school; over years you decide what it becomes. The dojo persists when your character doesn’t. In long-form development.</p>
+            <a class="link" href="https://github.com/ComradeClassen/hajime">See it on GitHub ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
+    <!-- ELSEWHERE -->
+    <section class="block" id="elsewhere">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow reveal">Elsewhere</p>
+          <h2 class="reveal">Every other <em>piece.</em></h2>
+        </div>
+        <ul class="elsewhere-list reveal">
+          <li><a href="https://comradeclassen.substack.com">Substack</a></li>
+          <li><a href="https://instagram.com/comradeclassen">Instagram</a></li>
+          <li><a href="https://youtube.com/@comradeclassen">YouTube</a></li>
+          <li><a href="https://soundcloud.com/comrade-classen">SoundCloud</a></li>
+          <li><a href="https://tiktok.com/@comradeclassen">TikTok</a></li>
+          <li><a href="https://threads.net/@comradeclassen">Threads</a></li>
+          <li><a href="https://linkedin.com/in/comradeclassen">LinkedIn</a></li>
+          <li><a href="https://github.com/ComradeClassen">GitHub</a></li>
+        </ul>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div class="wrap">
+      <span>&copy; 2026 Classen LLC · Elizabeth, NJ</span>
+      <span>Forever Onwards.</span>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.querySelector('.site-header');
+    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
+    onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+
+    const btn = document.querySelector('.menu-btn'), nav = document.getElementById('nav');
+    btn.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      nav.classList.remove('open'); btn.setAttribute('aria-expanded', 'false');
+    }));
+
+    const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => {
+      es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 }) : null;
+    document.querySelectorAll('.reveal').forEach(el => io ? io.observe(el) : el.classList.add('in'));
+  </script>
 </body>
 </html>
